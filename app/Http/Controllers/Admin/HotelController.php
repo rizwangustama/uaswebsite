@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Events;
+use App\Hotels;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\Admin\EventsRequest;
+use App\Http\Requests\Admin\HotelsRequest;
 
-class EventsController extends Controller
+class HotelController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class EventsController extends Controller
      */
     public function index()
     {
-        $items = Events::get();
-        return view ('page.admin.events.index', compact('items'));
+        $items = Hotels::get();
+        return view('page.admin.hotel.index', compact('items'));
     }
 
     /**
@@ -27,7 +27,7 @@ class EventsController extends Controller
      */
     public function create()
     {
-        return view('page.admin.events.create');
+        return view('page.admin.hotel.create');
     }
 
     /**
@@ -36,15 +36,15 @@ class EventsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(EventsRequest $request)
+    public function store(HotelsRequest $request)
     {
         $data = $request->all();
         $data['image'] = $request->file('image')->store(
             'assets/img', 'public'
         );
 
-        Events::create($data);
-        return redirect()->route('events.index');
+        Hotels::create($data);
+        return redirect()->route('hotel.index');
     }
 
     /**
@@ -66,8 +66,8 @@ class EventsController extends Controller
      */
     public function edit($id)
     {
-        $items = Events::findOrFail($id);
-        return view('page.admin.events.edit', compact('items'));
+        $items = Hotels::findOrFail($id);
+        return view('page.admin.hotel.edit', compact('items'));
     }
 
     /**
@@ -77,17 +77,17 @@ class EventsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(HotelsRequest $request, $id)
     {
         $data = $request->all();
         $data['image'] = $request->file('image')->store(
             'assets/img', 'public'
         );
 
-        $item = Events::findOrFail($id);
+        $item = Hotels::findOrFail($id);
         $item->update($data);
 
-        return redirect()->route('events.index');
+        return redirect()->route('hotel.index');
     }
 
     /**
@@ -98,8 +98,8 @@ class EventsController extends Controller
      */
     public function destroy($id)
     {
-        $item = Events::findOrFail($id);
+        $item = Hotels::findOrFail($id);
         $item->delete();
-        return redirect()->route('events.index');
+        return redirect()->route('hotel.index');
     }
 }

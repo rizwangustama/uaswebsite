@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Events extends Model
+class Projects extends Model
 {
     protected $fillable = [
-        'title', 'tanggal','image'
+        'title','text1','text2','text3','image'
     ];
 }

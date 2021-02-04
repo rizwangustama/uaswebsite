@@ -8,18 +8,18 @@
     <link rel="stylesheet" href="">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    @include('includes.style')
+    @include('include.admin.style')
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
 
         <!-- Navbar -->
-        @include('includes.navbar')
+        @include('include.admin.navbar')
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        @include('includes.sidebar')
+        @include('include.admin.sidebar')
         <!-- /.Main Sidebar -->
 
         <!-- Content Wrapper. Contains page content -->
@@ -29,7 +29,7 @@
         <!-- /.content-wrapper -->
 
         <!-- Footer -->
-        @include('includes.footer')
+        @include('include.admin.footer')
         <!-- /.footer -->
 
         <!-- Control Sidebar -->
@@ -39,7 +39,7 @@
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
-    @include('includes.script')
+    @include('include.admin.script')
 </body>
 
 </html>

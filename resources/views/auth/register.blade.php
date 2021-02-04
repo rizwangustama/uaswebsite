@@ -1,10 +1,10 @@
-@extends('layouts.app')
+@extends('index')
 
-@section('conten')
-<div class="container pt-5">
-    <div class="row justify-content-center pt-5">
-        <div class="col-md-8 pt-5">
-            <div class="card pt-5">
+@section('content')
+<div class="container" style="padding-top: 150px">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">

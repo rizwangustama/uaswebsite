@@ -11,29 +11,46 @@
 |
 */
 
-Route::resource('/', 'Home2Controller');
+// Route::get('/', function () {
+//     return view('page.home.homepage');
+// });
 
-Route::resource('/home', 'HomeController');
+// use Illuminate\Routing\Route;
 
-Route::resource('/signature', 'pages\SignaturePageController');
+Route::prefix('/')
+    ->namespace('Home')
+    ->group(function(){
+        Route::resource('/', 'HomepageController');
+        Route::get('/info', function () {
+            return view('page.home.infopage');
+        });
 
-Route::resource('/info', 'pages\InfoPageController');
-
-Route::resource('/our', 'pages\OurPageController');
-
-Route::resource('/social', 'pages\SocialPageController');
-
-Route::prefix('admin')
-    ->namespace('Admin')
-    ->group(function() {
-    Route::resource('/', 'DashboardController');
-    Route::resource('/news', 'NewsController');
-    Route::resource('/events', 'EventsController');
-    Route::resource('/signature', 'SignatureController');
-    Route::resource('/investor', 'InvestorController');
-    Route::resource('/info', 'InfoController');
-    Route::resource('/social', 'SocialController');
+        Route::get('/signature', function () {
+            return view('page.home.signaturepage');
+        });
+        Route::get('/social', function () {
+            return view('page.home.social');
+        });
+        Route::get('/our', function () {
+            return view('page.home.ourpage');
+        });
     });
 
 
+Route::prefix('home')
+    ->namespace('Admin')
+    ->group(function(){
+        Route::resource('/', 'DashboardController');
+        Route::resource('/events', 'EventsController');
+        Route::resource('/hotel', 'HotelController');
+        Route::resource('/project', 'ProjectsController');
+    });
+
+
+
+
+
+
 Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

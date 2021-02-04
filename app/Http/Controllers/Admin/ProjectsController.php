@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Events;
 use App\Http\Controllers\Controller;
+use App\Projects;
 use Illuminate\Http\Request;
-use App\Http\Requests\Admin\EventsRequest;
+use App\Http\Requests\Admin\ProjectsRequest;
 
-class EventsController extends Controller
+class ProjectsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class EventsController extends Controller
      */
     public function index()
     {
-        $items = Events::get();
-        return view ('page.admin.events.index', compact('items'));
+        $items = Projects::get();
+        return view('page.admin.project.index', compact('items'));
     }
 
     /**
@@ -27,7 +27,7 @@ class EventsController extends Controller
      */
     public function create()
     {
-        return view('page.admin.events.create');
+        return view('page.admin.project.create');
     }
 
     /**
@@ -36,15 +36,15 @@ class EventsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(EventsRequest $request)
+    public function store(ProjectsRequest $request)
     {
         $data = $request->all();
         $data['image'] = $request->file('image')->store(
             'assets/img', 'public'
         );
 
-        Events::create($data);
-        return redirect()->route('events.index');
+        Projects::create($data);
+        return redirect()->route('project.index');
     }
 
     /**
@@ -66,8 +66,8 @@ class EventsController extends Controller
      */
     public function edit($id)
     {
-        $items = Events::findOrFail($id);
-        return view('page.admin.events.edit', compact('items'));
+        $items = Projects::findOrFail($id);
+        return view('page.admin.project.edit', compact('items'));
     }
 
     /**
@@ -84,10 +84,10 @@ class EventsController extends Controller
             'assets/img', 'public'
         );
 
-        $item = Events::findOrFail($id);
+        $item = Projects::findOrFail($id);
         $item->update($data);
 
-        return redirect()->route('events.index');
+        return redirect()->route('project.index');
     }
 
     /**
@@ -98,8 +98,8 @@ class EventsController extends Controller
      */
     public function destroy($id)
     {
-        $item = Events::findOrFail($id);
+        $item = Projects::findOrFail($id);
         $item->delete();
-        return redirect()->route('events.index');
+        return redirect()->route('project.index');
     }
 }

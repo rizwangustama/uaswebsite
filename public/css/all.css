@@ -13,7 +13,7 @@ body {
   position: fixed;
   background-color: white;
   width: 100%;
-  z-index: 5;
+  z-index: 99;
   transition: ease all 1s;
 }
 
@@ -215,7 +215,7 @@ body {
   position: fixed;
   background-color: rgba(255, 255, 255, 0.9);
   width: 100%;
-  z-index: 5;
+  z-index: 99;
 }
 
 .satu .container {
@@ -560,6 +560,7 @@ body {
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 380.52px;
   column-gap: 10px;
+  row-gap: 10px;
 }
 
 #kelima .container1 .grid .colom:hover {
@@ -942,6 +943,18 @@ footer menu .container2 ul li a {
 #page-signature .container3 .grid .colom h2 {
     text-align: center;
 }
+
+#myBtnContainer .btn {
+    font-family: din;
+}
+
+#myBtnContainer .btn:hover {
+    background-color: #e27026;
+    border-radius: 0px;
+    color: white;
+}
+
+
 
 /* pages Info */
 
